@@ -1,5 +1,6 @@
 package com.example.appointment.domain;
 
+import com.sun.istack.NotNull;
 import lombok.*;
 
 import javax.persistence.Entity;
@@ -17,7 +18,7 @@ public class Store {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-
+    @NotNull
     private String storeName;
     private String storePosition;
     private String storeDescription;

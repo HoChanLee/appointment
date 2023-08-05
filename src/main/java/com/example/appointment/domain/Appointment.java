@@ -1,5 +1,6 @@
 package com.example.appointment.domain;
 
+import com.sun.istack.NotNull;
 import lombok.*;
 
 import javax.persistence.Entity;
@@ -18,8 +19,9 @@ public class Appointment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-
+    @NotNull
     private long userId;
+    @NotNull
     private long storeId;
     private String userName;
     private String storeName;
