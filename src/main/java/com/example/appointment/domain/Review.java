@@ -19,5 +19,5 @@ public class Review {
     private long id;
 
     private long appointmentId;
-    private String review;
+    private String text;
 }

@@ -10,12 +10,12 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class ReviewDto {
     private long appointmentId;
-    private String review;
+    private String text;
 
     public Review toEntity(){
         return Review.builder()
                 .appointmentId(this.appointmentId)
-                .review(this.review)
+                .text(this.text)
                 .build();
     }
 }

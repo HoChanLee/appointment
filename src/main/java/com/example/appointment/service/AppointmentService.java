@@ -33,7 +33,7 @@ public class AppointmentService {
         //권한 확인
         boolean isUser = false;
         for(String item : user.get().getRoles()){
-            if(item == "ROLE_USER"){
+            if(item.equals("ROLE_USER")){
                 isUser = true;
             }
         }
