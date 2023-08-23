@@ -5,6 +5,11 @@
 ### [기술스택]
 * Spring Boot, Java, JPA, JWT, MySQL
 ------------------
+
+### [ERD]
+<img width="854" alt="image" src="https://github.com/HoChanLee/appointment/assets/106670454/f4463136-2cde-4ecd-bd04-4d83c4e2a619">
+
+
 ### [API 리스트]
 * __POST - store/register__
     * 매장 등록을 위한 API (JWT 필요)
