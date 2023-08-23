@@ -1,6 +1,6 @@
 package com.example.appointment.security;
 
-import com.example.appointment.service.PartnerAuthService;
+import com.example.appointment.service.UserAuthService;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
@@ -23,7 +23,7 @@ public class TokenProvider {
     private static final long TOKEN_EXPIRE_TIME = 1000 * 60 * 60; //1시간
     private static final String KEY_ROLES = "roles";
 
-    private final PartnerAuthService partnerAuthService;
+    private final UserAuthService userAuthService;
 
     @Value("${jwt.secret}")
     private String secretKey;
@@ -51,7 +51,7 @@ public class TokenProvider {
 
     //Jwt로 부터 인증정보를 가져오는 메서드
     public Authentication getAuthentication(String jwt) {
-        UserDetails userDetails = this.partnerAuthService.loadUserByUsername(this.getUsername(jwt));
+        UserDetails userDetails = this.userAuthService.loadUserByUsername(this.getUsername(jwt));
         return new UsernamePasswordAuthenticationToken(userDetails, "", userDetails.getAuthorities());
     }
 

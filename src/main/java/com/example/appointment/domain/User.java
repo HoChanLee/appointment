@@ -16,12 +16,12 @@ import java.util.stream.Collectors;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity(name="partner")
-public class Partner implements UserDetails {
+@Entity(name="user")
+public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private String partnerName;
+    private String userName;
     @JsonIgnore
     private String password;
     @ElementCollection(fetch = FetchType.EAGER)
@@ -42,7 +42,7 @@ public class Partner implements UserDetails {
 
     @Override
     public String getUsername() {
-        return this.partnerName;
+        return this.userName;
     }
 
     @Override

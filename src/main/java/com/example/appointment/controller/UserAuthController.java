@@ -1,9 +1,9 @@
 package com.example.appointment.controller;
 
-import com.example.appointment.domain.Partner;
+import com.example.appointment.domain.User;
 import com.example.appointment.dto.Auth;
 import com.example.appointment.security.TokenProvider;
-import com.example.appointment.service.PartnerAuthService;
+import com.example.appointment.service.UserAuthService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/auth")
 @RequiredArgsConstructor
-public class PartnerAuthController {
-    private final PartnerAuthService partnerAuthService;
+public class UserAuthController {
+    private final UserAuthService userAuthService;
     private final TokenProvider tokenProvider;
 
     /**
@@ -24,7 +24,7 @@ public class PartnerAuthController {
      */
     @PostMapping("/signup")
     public ResponseEntity<?> signup(@RequestBody Auth.SignUp request) {
-        Partner register = this.partnerAuthService.register(request);
+        User register = this.userAuthService.register(request);
         return ResponseEntity.ok(register);
     }
 
@@ -36,8 +36,8 @@ public class PartnerAuthController {
      */
     @PostMapping("/signin")
     public ResponseEntity<?> signin(@RequestBody Auth.SignIn request) {
-        Partner partner = this.partnerAuthService.authenticate(request);
-        String token = this.tokenProvider.generateToken(partner.getPartnerName(), partner.getRoles());
+        User user = this.userAuthService.authenticate(request);
+        String token = this.tokenProvider.generateToken(user.getUsername(), user.getRoles());
         return ResponseEntity.ok(token);
     }
 

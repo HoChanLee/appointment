@@ -1,11 +1,11 @@
 package com.example.appointment.service;
 
 import com.example.appointment.domain.Appointment;
-import com.example.appointment.domain.Partner;
+import com.example.appointment.domain.User;
 import com.example.appointment.domain.Store;
 import com.example.appointment.dto.AppointmentDto;
 import com.example.appointment.repository.AppointmentRepository;
-import com.example.appointment.repository.PartnerRepository;
+import com.example.appointment.repository.UserRepository;
 import com.example.appointment.repository.StoreRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -19,13 +19,13 @@ import java.util.Optional;
 @Service
 public class AppointmentService {
     private final AppointmentRepository appointmentRepository;
-    private final PartnerRepository partnerRepository;
+    private final UserRepository userRepository;
     private final StoreRepository storeRepository;
 
     //매장 예약
     public Appointment addAppointment(AppointmentDto appointmentDto){
-        Optional<Partner> user = partnerRepository.findById(appointmentDto.getUserId());
-        String userName = user.get().getPartnerName();
+        Optional<User> user = userRepository.findById(appointmentDto.getUserId());
+        String userName = user.get().getUsername();
 
         Optional<Store> store = storeRepository.findById(appointmentDto.getStoreId());
         String storeName = store.get().getStoreName();
